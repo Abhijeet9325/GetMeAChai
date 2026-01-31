@@ -39,7 +39,7 @@ const PaymentPage = ({ username }) => {
 
         const options = {
             key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-            amount: finalAmount * 100, // paise
+            amount: finalAmount , // paise
             currency: "INR",
             name: "GetMeAChai",
             description: "Test Transaction",
