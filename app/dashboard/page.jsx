@@ -10,7 +10,7 @@ const Dashboard = () => {
       router.push("/login")
     }
   return (
-    <div className="min-h-full flex items-center justify-center bg-[#020617] bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px] px-1">
+    <div className="min-h-[70vw] flex items-center justify-center bg-[#020617] bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px] px-1">
       <div className="w-full max-w-xl text-white">
         
         {/* Title */}
@@ -62,7 +62,14 @@ const Dashboard = () => {
           </div>
 
           <div>
-            <label className="block mb-1 text-sm">Razorpay Credentials</label>
+            <label className="block mb-1 text-sm">Razorpay Id</label>
+            <input
+              type="text"
+              className="w-full h-11 rounded-lg bg-slate-700/70 border border-slate-600 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block mb-1 text-sm">Razorpay Secret</label>
             <input
               type="text"
               className="w-full h-11 rounded-lg bg-slate-700/70 border border-slate-600 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -80,4 +87,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Dashboard;
