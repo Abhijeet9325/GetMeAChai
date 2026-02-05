@@ -8,9 +8,11 @@ const userSchema = new Schema({
     username: { type: String },
     profilepic: { type: String },
     coverpic: { type: String },
+    razorpayid: { type: String },
+    razorpaysecret: { type: String },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
 
 
-export default mongoose.models.user || model("user",userSchema);
+export default mongoose.models.user || model("user", userSchema);

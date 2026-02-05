@@ -83,7 +83,7 @@ export default function Home() {
         <h2 className="font-bold text-4xl mb-12 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
           Learn More About Us
         </h2>
-        <div className="w-full max-w-4xl p-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-2xl">
+        <div className="w-full max-w-xl p-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-2xl">
            <div className="relative w-full pt-[56.25%] rounded-xl overflow-hidden bg-black">
               <iframe 
                 className="absolute top-0 left-0 w-full h-full" 
