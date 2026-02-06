@@ -191,7 +191,7 @@ const Dashboard = () => {
             </div>
 
             {/* Save Button */}
-            <button type='submit' className="w-full h-12 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold shadow-lg shadow-purple-500/20 transform hover:-translate-y-0.5 transition-all duration-300 mt-6 flex items-center justify-center gap-2">
+            <button type='submit' className="w-full h-12 rounded-xl bg-gradient-to-r cursor-pointer from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold shadow-lg shadow-purple-500/20 transform hover:-translate-y-0.5 transition-all duration-300 mt-6 flex items-center justify-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
