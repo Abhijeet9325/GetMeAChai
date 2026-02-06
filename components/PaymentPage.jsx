@@ -17,7 +17,7 @@ const PaymentPage = ({ username }) => {
         message: "",
         amount: "",
     });
-    const [currentUser, setcurrentUser] = useState({})
+    const [currentUser, setcurrentUser] = useState(null)
     const [Payments, setPayments] = useState([])
 
     useEffect(() => {
@@ -72,8 +72,7 @@ const PaymentPage = ({ username }) => {
 
 
         const options = {
-            key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-
+            key: currentUser.razorpayid,
             currency: "INR",
             name: "GetMeAChai",
             description: "Test Transaction",
@@ -92,7 +91,7 @@ const PaymentPage = ({ username }) => {
         const rzp = new window.Razorpay(options);
         rzp.open();
     };
-    
+
 
     return (
         <>
@@ -103,9 +102,9 @@ const PaymentPage = ({ username }) => {
 
             {/* COVER */}
             <div className="cover w-full relative">
-                <img className="w-full object-cover h-[350px]" src="https://c10.patreonusercontent.com/4/patreon-media/p/campaign/4842667/452146dcfeb04f38853368f554aadde1/eyJ3IjoxMjAwLCJ3ZSI6MX0%3D/19.gif?token-hash=spU6Nwq97Z5xa2YAIEIVf9vXt7Wstbz85d4rhD4O6N4%3D&token-time=1770163200" alt="" />
+                <img className="w-full object-cover h-[350px]" src={currentUser?.profilepic} alt="" />
                 <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 border-4 border-slate-900 rounded-lg">
-                    <img width={150} height={150} className="rounded-lg" src="/krsna.webp" alt="" />
+                    <img width={150} height={150} className="rounded-lg" src={currentUser?.coverpic} alt="" />
                 </div>
             </div>
 
@@ -124,18 +123,21 @@ const PaymentPage = ({ username }) => {
                     <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-xl h-fit">
                         <h2 className="text-2xl font-bold mb-6 text-center">Supporters</h2>
                         <div className="space-y-6 text-sm">
-                            {Payments?.length === 0 && <div className="text-white">No payments yet</div>}
+                            {(!Payments || Payments.length === 0) && (
+                                <div className="text-white">No payments yet</div>
+                            )}
+
                             {Payments?.map((p, i) => {
-                                return <>
-                                    <div key={i} className="flex items-center gap-4 p-3 bg-slate-900/40 rounded-xl border border-slate-800">
-                                        <img src="/avatar.gif" className="w-10 h-10 rounded-full border border-slate-600" alt="" />
-                                        <p className="text-slate-300">
-                                            <span className="font-semibold text-white block">"{p.name}"</span>
-                                            donated <span className="font-bold text-yellow-500">"{p.message}"</span> with a message
-                                            <span className="block text-slate-400 italic mt-1">“I support you bro ❤️”</span>
-                                        </p>
-                                    </div>
-                                </>
+
+                                <div key={i} className="flex items-center gap-4 p-3 bg-slate-900/40 rounded-xl border border-slate-800">
+                                    <img src="/avatar.gif" className="w-10 h-10 rounded-full border border-slate-600" alt="" />
+                                    <p className="text-slate-300">
+                                        <span className="font-semibold text-white block">"{p.name}"</span>
+                                        donated <span className="font-bold text-yellow-500">"{p.message}"</span> with a message
+                                        <span className="block text-slate-400 italic mt-1">“I support you bro ❤️”</span>
+                                    </p>
+                                </div>
+
                             })}
 
                         </div>

@@ -4,6 +4,7 @@ import Razorpay from "razorpay";
 import Payment from "@/app/models/Payment";
 import connectDB from "@/db/connectDB";
 
+
 export const POST = async (req) => {
     await connectDB();
     let body = await req.formData();
@@ -15,7 +16,7 @@ export const POST = async (req) => {
     }
 
     // verify the payment
-    let xx = validatePaymentVerification({ "order_id": body.razorpay_order_id, "payment_id": body.razorpay_payment_id }, body.razorpay_signature, process.env.NEXT_PUBLIC_RAZORPAY_SECRET_ID)
+    let xx = validatePaymentVerification({ "order_id": body.razorpay_order_id, "payment_id": body.razorpay_payment_id }, body.razorpay_signature, currentUser.razorpaysecret)
 
     if (xx) {
         const updatePayment = await Payment.findOneAndUpdate({ oid: body.razorpay_order_id }, { done: "true" }, { new: true })

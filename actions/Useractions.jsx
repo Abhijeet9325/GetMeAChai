@@ -7,7 +7,16 @@ import User from "@/app/models/User"
 export const initiate = async (amount, to_username, paymentform) => {
     console.log("AMOUNT RECEIVED (rupees):", amount);
     await connectDB();
-    var instance = new Razorpay({ key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, key_secret: process.env.NEXT_PUBLIC_RAZORPAY_SECRET_ID })
+
+    
+    // 🔴 FETCH USER FIRST
+    const user = await User.findOne({ username: to_username }).lean();
+    if (!user) {
+        throw new Error("User not found");
+    }
+
+
+    var instance = new Razorpay({ key_id: user.razorpayid, key_secret: user.razorpaysecret })
     instance.orders.create({
         amount: 50000,
         currency: "INR",

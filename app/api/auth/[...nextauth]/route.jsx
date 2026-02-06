@@ -23,10 +23,10 @@ export const authOptions = {
         if (!currentUser) {
           const newUser = await User.create({
             email: user.email,
-            username: user.email.split("@")[0],
+            username: user.email.split("@")[0]
           })
         }
-        return true
+        return true;
       }
     },
     async session({ session, token, user }) {
@@ -34,6 +34,7 @@ export const authOptions = {
       if (dbUser) {
         session.user.name = dbUser.username
       }
+      
       return session
     }
   }
