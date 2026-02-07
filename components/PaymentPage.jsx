@@ -41,16 +41,17 @@ const PaymentPage = ({ username }) => {
         console.log(paymentform);
     };
 
+
     const handlePayment = async (presetAmount) => {
         const finalAmount =
             presetAmount !== undefined
                 ? presetAmount
                 : Number(paymentform.amount);
 
-        if (!finalAmount || finalAmount < 10) {
-            alert("Minimum ₹10 required");
-            return;
-        }
+        // if (!finalAmount || finalAmount < 10) {
+        //     alert("Minimum ₹10 required");
+        //     return;
+        // }
         const order = await initiate(
             Number.parseInt(finalAmount * 100),
             username,
@@ -71,13 +72,28 @@ const PaymentPage = ({ username }) => {
         }
 
 
+
         const options = {
             key: currentUser.razorpayid,
             currency: "INR",
             name: "GetMeAChai",
             description: "Test Transaction",
             order_id: order.id,
-            callback_url: `${process.env.NEXT_PUBLIC_RAZORPAY_URL}/api/razorpay`,
+            handler: async function (response) {
+                // payment verify
+                const res = await fetch("/api/razorpay/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(response),
+                });
+                const data = await res.json();
+                console.log("VERIFY RESPONSE:", data);
+
+                // ✅ NO 404 redirect
+                window.location.href = `/${username}?paymentdone=true`;
+            },
+
+
             prefill: {
                 name: paymentform.name,
                 email: paymentform.email,
@@ -88,6 +104,7 @@ const PaymentPage = ({ username }) => {
             },
         };
 
+
         const rzp = new window.Razorpay(options);
         rzp.open();
     };
@@ -95,10 +112,12 @@ const PaymentPage = ({ username }) => {
 
     return (
         <>
+        
             <Script
                 src="https://checkout.razorpay.com/v1/checkout.js"
                 strategy="afterInteractive"
             />
+
 
             {/* COVER */}
             <div className="cover w-full relative">
@@ -127,18 +146,17 @@ const PaymentPage = ({ username }) => {
                                 <div className="text-white">No payments yet</div>
                             )}
 
-                            {Payments?.map((p, i) => {
-
+                            {Payments?.map((p, i) => (
                                 <div key={i} className="flex items-center gap-4 p-3 bg-slate-900/40 rounded-xl border border-slate-800">
                                     <img src="/avatar.gif" className="w-10 h-10 rounded-full border border-slate-600" alt="" />
                                     <p className="text-slate-300">
                                         <span className="font-semibold text-white block">"{p.name}"</span>
-                                        donated <span className="font-bold text-yellow-500">"{p.message}"</span> with a message
-                                        <span className="block text-slate-400 italic mt-1">“I support you bro ❤️”</span>
+                                        {/* <span className="block text-slate-400 italic ">“I support you bro ❤️”</span> */}
+                                        donated  <span className="font-bold text-yellow-500">₹{p.amount / 100}</span> with a message
+                                        <span className="block text-slate-400 italic mt-1">"{p.message}"</span>
                                     </p>
                                 </div>
-
-                            })}
+                            ))}
 
                         </div>
                     </div>
