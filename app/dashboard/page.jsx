@@ -33,6 +33,12 @@ const Dashboard = () => {
     console.log(e)
     let a = await updatedProfile(e, session.user.name);
     alert("Profile Updated")
+
+    const formData = new FormData();
+    formData.append("name", form.name);
+    formData.append("username", form.username);
+
+    const res = await updatedProfile(formData, session.user.email);
   }
 
   return (
