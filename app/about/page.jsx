@@ -1,7 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
 
+export const metadata = {
+  title: "About | GetMeAChai",
+  description: "Learn more about GetMeAChai and how it helps creators receive support.",
+};
+
+
 const About = () => {
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 text-white">
       
@@ -72,7 +79,7 @@ const About = () => {
         </p>
         
         <div className="flex flex-wrap justify-center gap-4 relative z-10">
-          <Link href="/login" className="px-8 py-3 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors shadow-lg shadow-white/10">
+          <Link href="/login" className="px-8  py-3 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors shadow-lg shadow-white/10">
             Get Started
           </Link>
          
@@ -93,3 +100,4 @@ const About = () => {
 }
 
 export default About
+

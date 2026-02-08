@@ -2,14 +2,22 @@
 import { useSession, signIn, signOut } from "next-auth/react"
 import React from 'react'
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 const Login = () => {
   const { data: session } = useSession()
-   if (session) {
-    const router = useRouter();
-    router.push("/dashboard")
-    
-  }
+  const router = useRouter()
+
+  useEffect(() => {
+    if (session) {
+      router.push("/dashboard")
+    }
+  }, [session, router])
+
+  useEffect(() => {
+    document.title = "Login - GetMeAChai"
+  }, [])
+  
   return (
     <div className='flex items-center justify-center min-h-[80vh] px-4'>
       <div className="w-full max-w-md bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-2xl shadow-2xl p-8 relative overflow-hidden group hover:border-slate-600/80 transition-all duration-300">
@@ -78,3 +86,4 @@ const Login = () => {
 }
 
 export default Login
+
