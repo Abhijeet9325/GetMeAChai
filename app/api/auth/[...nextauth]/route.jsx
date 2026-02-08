@@ -30,6 +30,7 @@ export const authOptions = {
       }
     },
     async session({ session, token, user }) {
+      await connectDB()
       const dbUser = await User.findOne({ email: session.user.email })
       if (dbUser) {
         session.user.name = dbUser.username
