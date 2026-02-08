@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -20,18 +21,22 @@ export default function Home() {
               <img className="invertImg drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" src="/tea.gif" width={80} alt="tea cup" />
             </span>
           </div>
-          
+
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
             A crowdfunding platform for creators. Get funded by your fans and followers. Start your journey today!
           </p>
-          
+
           <div className="flex gap-4 mt-4">
-            <button type="button" className="text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg shadow-purple-500/30 font-bold rounded-full text-base px-8 py-4 transition-all hover:scale-105 active:scale-95">
-              Start Now
-            </button>
-            <button type="button" className="text-white bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 shadow-lg font-bold rounded-full text-base px-8 py-4 transition-all hover:scale-105 active:scale-95">
+            <Link href={"/dashboard"}>
+              <button type="button" className="cursor-pointer text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg shadow-purple-500/30 font-bold rounded-full text-base px-8 py-4 transition-all hover:scale-105 active:scale-95">
+                Start Now
+              </button>
+            </Link>
+            <Link href={"/about"}>
+            <button type="button" className=" cursor-pointer text-white bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 shadow-lg font-bold rounded-full text-base px-8 py-4 transition-all hover:scale-105 active:scale-95">
               Read More
             </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -44,7 +49,7 @@ export default function Home() {
         <h2 className="font-bold text-center text-4xl mb-16 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
           Your fans can buy you a chai
         </h2>
-        
+
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-6xl mx-auto">
           {/* Card 1 */}
           <div className="group flex flex-col items-center text-center p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-purple-500/50 hover:bg-slate-800/80 transition-all duration-300 w-full md:w-1/3 hover:-translate-y-2">
@@ -84,16 +89,16 @@ export default function Home() {
           Learn More About Us
         </h2>
         <div className="w-full max-w-xl p-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-2xl">
-           <div className="relative w-full pt-[56.25%] rounded-xl overflow-hidden bg-black">
-              <iframe 
-                className="absolute top-0 left-0 w-full h-full" 
-                src="https://www.youtube.com/embed/kMRWLz8G5SU?si=3e8aOjbuazvN4-3X" 
-                title="YouTube video player" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowFullScreen
-              ></iframe>
-           </div>
+          <div className="relative w-full pt-[56.25%] rounded-xl overflow-hidden bg-black">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/kMRWLz8G5SU?si=3e8aOjbuazvN4-3X"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </div>
     </>

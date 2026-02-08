@@ -3,6 +3,8 @@ import Script from "next/script";
 import { fetchPayments, fetchUser, initiate } from "@/actions/Useractions";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { ToastContainer, toast } from 'react-toastify';
+import { useSearchParams } from "next/navigation";
 
 
 const PaymentPage = ({ username }) => {
@@ -19,11 +21,28 @@ const PaymentPage = ({ username }) => {
     });
     const [currentUser, setcurrentUser] = useState(null)
     const [Payments, setPayments] = useState([])
+    const SearchParams = useSearchParams();
 
     useEffect(() => {
         getData();
     },
         []);
+
+    useEffect(() => {
+        if (SearchParams.get("paymentdone") == "true") {
+            toast.success('Thanks for your donation!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
+    }, [])
+
 
     const getData = async () => {
         let u = await fetchUser(username);
@@ -112,7 +131,19 @@ const PaymentPage = ({ username }) => {
 
     return (
         <>
-        
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+
             <Script
                 src="https://checkout.razorpay.com/v1/checkout.js"
                 strategy="afterInteractive"
@@ -130,8 +161,11 @@ const PaymentPage = ({ username }) => {
             {/* PROFILE INFO */}
             <div className="flex flex-col items-center mt-24 mb-16 text-white">
                 <div className="font-bold text-3xl mb-1">@{shortUsername}</div>
-                <div className="text-slate-400 text-lg mb-2">Creating Animated art for VTT's</div>
-                <div className="text-slate-400 text-sm italic"> 22,687 members · 106 posts · $18,770/release </div>
+                <div className="text-slate-400 text-lg mb-2">Let's help {username} to get chai!</div>
+                <div className="text-slate-400 text-sm italic">
+
+                    
+               {Payments.length} Payments . ₹     <span className="text-yellow-100 font-semibold">{Payments.reduce((a, b) => a + b.amount, 0)} </span> raised </div>
             </div>
 
             {/* MAIN SECTION */}
@@ -201,8 +235,8 @@ const PaymentPage = ({ username }) => {
                             </div>
 
                             <button
-                                onClick={() => handlePayment()}
-                                className=" w-full py-3 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 font-bold text-lg shadow-lg shadow-purple-900/20 transition-all active:scale-[0.98] mt-2"
+                                onClick={() => handlePayment()} disabled={paymentform.name.length < 4 || paymentform.message.length < 4 || paymentform.amount.length<1}
+                                className=" disabled:from-purple-950 to-blue-900 hover:from-purple-900 hover:to-blue-900 w-full cursor-pointer py-3 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 font-bold text-lg shadow-lg shadow-purple-900/20 transition-all active:scale-[0.98] mt-2"
                             >
                                 Pay
                             </button>

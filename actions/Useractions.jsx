@@ -8,7 +8,7 @@ export const initiate = async (amount, to_username, paymentform) => {
     console.log("AMOUNT RECEIVED (rupees):", amount);
     await connectDB();
 
-    
+
     // 🔴 FETCH USER FIRST
     const user = await User.findOne({ username: to_username }).lean();
     if (!user) {
@@ -17,15 +17,7 @@ export const initiate = async (amount, to_username, paymentform) => {
 
 
     var instance = new Razorpay({ key_id: user.razorpayid, key_secret: user.razorpaysecret })
-    instance.orders.create({
-        amount: 50000,
-        currency: "INR",
-        receipt: "receipt#1",
-        notes: {
-            key1: "value3",
-            key2: "value2"
-        }
-    })
+
     let options = {
         amount: Number.parseInt(amount),
         currency: "INR",
@@ -50,6 +42,7 @@ export const fetchPayments = async (username) => {
     await connectDB();
     // find all payments sorted by decreasing order of amount and flatten object ids
     let p = await Payment.find({ to_user: username, done: true }).sort({ amount: -1 }).lean();
+    return p;
 }
 
 export const updatedProfile = async (data, oldusername) => {
@@ -65,4 +58,6 @@ export const updatedProfile = async (data, oldusername) => {
 
     }
     await User.updateOne({ email: ndata.email }, ndata)
+    // Now updated all the usernames in the payment table
+    await Payment.updateMany({ to_user: oldusername }, { to_user: ndata.username })
 } 
