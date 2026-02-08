@@ -27,8 +27,8 @@ const Navbar = () => {
               onBlur={() => setTimeout(() => setshowDropdown(false), 300)}
               className="group flex items-center justify-center text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 font-medium cursor-pointer rounded-full text-sm px-5 py-2.5 transition-all duration-300 shadow-sm"
             >
-              <span className="mr-2 text-slate-300 group-hover:text-white transition-colors">Hello,</span> 
-              <span className="font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">{session.user.name || session.user.email.split('@')[0]}</span>
+              <span className="mr-2 text-slate-300 group-hover:text-white transition-colors hidden md:inline">Hello,</span> 
+              <span className="font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent max-w-[100px] md:max-w-none truncate">{session.user.name || session.user.email.split('@')[0]}</span>
               <svg className={`w-4 h-4 ml-2 text-slate-400 group-hover:text-white transition-transform duration-300 ${showDropdown ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19 9-7 7-7-7" />
               </svg>

@@ -152,20 +152,20 @@ const PaymentPage = ({ username }) => {
 
             {/* COVER */}
             <div className="cover w-full relative">
-                <img className="w-full object-cover h-[350px]" src={currentUser?.profilepic} alt="" />
-                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 border-4 border-slate-900 rounded-lg">
-                    <img width={150} height={150} className="rounded-lg" src={currentUser?.coverpic} alt="" />
+                <img className="w-full object-cover h-48 md:h-[350px]" src={currentUser?.profilepic} alt="" />
+                <div className="absolute -bottom-16 md:-bottom-20 left-1/2 -translate-x-1/2 border-4 border-slate-900 rounded-lg">
+                    <img className="rounded-lg w-32 h-32 md:w-[150px] md:h-[150px] object-cover" src={currentUser?.coverpic} alt="" />
                 </div>
             </div>
 
             {/* PROFILE INFO */}
-            <div className="flex flex-col items-center mt-24 mb-16 text-white">
-                <div className="font-bold text-3xl mb-1">@{shortUsername}</div>
-                <div className="text-slate-400 text-lg mb-2">Let's help {username} to get chai!</div>
+            <div className="flex flex-col items-center mt-20 md:mt-24 mb-16 text-white px-4 text-center">
+                <div className="font-bold text-2xl md:text-3xl mb-1">@{shortUsername}</div>
+                <div className="text-slate-400 text-base md:text-lg mb-2">Let's help {username} to get chai!</div>
                 <div className="text-slate-400 text-sm italic">
 
                     
-               {Payments.length} Payments . ₹     <span className="text-yellow-100 font-semibold">{Payments.reduce((a, b) => a + b.amount, 0)} </span> raised </div>
+               {Payments.length} Payments . ₹     <span className="text-yellow-100 font-semibold">{Payments?.reduce((a, b) => a + b.amount, 0)} </span> raised </div>
             </div>
 
             {/* MAIN SECTION */}
@@ -196,7 +196,7 @@ const PaymentPage = ({ username }) => {
                     </div>
 
                     {/* PAYMENT */}
-                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-xl sticky top-24">
+                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-4 md:p-8 shadow-xl sticky top-24">
                         <h2 className="text-2xl font-bold mb-6 text-center">Make a Payment</h2>
 
                         <div className="space-y-4">

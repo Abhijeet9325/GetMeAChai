@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative flex flex-col items-center justify-center text-white h-[80vh] px-4">
+      <div className="relative flex flex-col items-center justify-center text-white min-h-[80vh] px-4 py-16 md:py-0">
         {/* Background Glow Effect */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
           <div className="absolute top-[20%] left-[20%] w-72 h-72 bg-purple-600/30 rounded-full blur-[100px]"></div>
