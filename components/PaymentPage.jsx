@@ -38,7 +38,7 @@ const PaymentPage = ({ username }) => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "dark",
+                theme: "light",
             });
         }
     }, [])
@@ -112,7 +112,6 @@ const PaymentPage = ({ username }) => {
                 window.location.href = `/${username}?paymentdone=true`;
             },
 
-
             prefill: {
                 name: paymentform.name,
                 email: paymentform.email,
@@ -153,41 +152,41 @@ const PaymentPage = ({ username }) => {
             {/* COVER */}
             <div className="cover w-full relative">
                 <img className="w-full object-cover h-48 md:h-[350px]" src={currentUser?.profilepic} alt="" />
-                <div className="absolute -bottom-16 md:-bottom-20 left-1/2 -translate-x-1/2 border-4 border-slate-900 rounded-lg">
-                    <img className="rounded-lg w-32 h-32 md:w-[150px] md:h-[150px] object-cover" src={currentUser?.coverpic} alt="" />
+                <div className="absolute -bottom-16 md:-bottom-20 left-1/2 -translate-x-1/2 border-4 border-white rounded-lg shadow-lg">
+                    <img className="rounded-lg w-32 h-32 md:w-[150px] md:h-[150px] object-cover bg-white" src={currentUser?.coverpic} alt="" />
                 </div>
             </div>
 
             {/* PROFILE INFO */}
-            <div className="flex flex-col items-center mt-20 md:mt-24 mb-16 text-white px-4 text-center">
+            <div className="flex flex-col items-center mt-20 md:mt-24 mb-16 text-slate-900 px-4 text-center">
                 <div className="font-bold text-2xl md:text-3xl mb-1">@{shortUsername}</div>
-                <div className="text-slate-400 text-base md:text-lg mb-2">Let's help {username} to get chai!</div>
-                <div className="text-slate-400 text-sm italic">
+                <div className="text-slate-600 text-base md:text-lg mb-2">Let's help {username} to get chai!</div>
+                <div className="text-slate-500 text-sm italic">
 
                     
-               {Payments.length} Payments . ₹     <span className="text-yellow-100 font-semibold">{Payments?.reduce((a, b) => a + b.amount, 0)} </span> raised </div>
+               {Payments.length} Payments . ₹     <span className="text-slate-900 font-bold">{Payments?.reduce((a, b) => a + b.amount, 0)} </span> raised </div>
             </div>
 
             {/* MAIN SECTION */}
-            <div className="min-h-screen text-white flex items-start justify-center px-6 pb-20">
+            <div className="min-h-screen flex items-start justify-center px-6 pb-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl w-full">
 
                     {/* SUPPORTERS */}
-                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-xl h-fit">
-                        <h2 className="text-2xl font-bold mb-6 text-center">Supporters</h2>
+                    <div className=" bg-slate-100  border border-slate-200 rounded-2xl p-8 h-fit">
+                        <h2 className="text-2xl font-bold mb-6 text-center text-slate-900 ">Supporters</h2>
                         <div className="space-y-6 text-sm">
                             {(!Payments || Payments.length === 0) && (
-                                <div className="text-white">No payments yet</div>
+                                <div className="text-slate-500 text-center">No payments yet</div>
                             )}
 
                             {Payments?.map((p, i) => (
-                                <div key={i} className="flex items-center gap-4 p-3 bg-slate-900/40 rounded-xl border border-slate-800">
-                                    <img src="/avatar.gif" className="w-10 h-10 rounded-full border border-slate-600" alt="" />
-                                    <p className="text-slate-300">
-                                        <span className="font-semibold text-white block">"{p.name}"</span>
+                                <div key={i} className="flex items-center gap-4 p-3 bg-white rounded-xl border border-slate-100">
+                                    <img src="/avatar.gif" className="w-10 h-10 rounded-full border border-slate-200" alt="" />
+                                    <p className="text-slate-600">
+                                        <span className="font-semibold text-slate-900 block">"{p.name}"</span>
                                         {/* <span className="block text-slate-400 italic ">“I support you bro ❤️”</span> */}
-                                        donated  <span className="font-bold text-yellow-500">₹{p.amount / 100}</span> with a message
-                                        <span className="block text-slate-400 italic mt-1">"{p.message}"</span>
+                                        donated  <span className="font-bold text-green-600">₹{p.amount / 100}</span> with a message
+                                        <span className="block text-slate-500 italic mt-1">"{p.message}"</span>
                                     </p>
                                 </div>
                             ))}
@@ -196,47 +195,47 @@ const PaymentPage = ({ username }) => {
                     </div>
 
                     {/* PAYMENT */}
-                    <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-4 md:p-8 shadow-xl sticky top-24">
-                        <h2 className="text-2xl font-bold mb-6 text-center">Make a Payment</h2>
+                    <div className="bg-slate-100 border border-slate-200 rounded-2xl p-4 md:p-8 sticky top-24">
+                        <h2 className="text-2xl font-bold mb-6 text-center text-slate-900">Make a Payment</h2>
 
                         <div className="space-y-4">
                             <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-slate-400">Name</label>
+                                <label className="text-sm font-medium text-slate-600">Name</label>
                                 <input
                                     name="name"
                                     value={paymentform.name}
                                     onChange={handleChange}
                                     placeholder="Enter Name"
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all"
+                                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 outline-none text-slate-900 placeholder-slate-400"
                                 />
                             </div>
 
                             <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-slate-400">Message</label>
+                                <label className="text-sm font-medium text-slate-600">Message</label>
                                 <input
                                     name="message"
                                     value={paymentform.message}
                                     onChange={handleChange}
                                     placeholder="Enter Message"
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all"
+                                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 outline-none text-slate-900 placeholder-slate-400"
                                 />
                             </div>
 
                             <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-slate-400">Amount</label>
+                                <label className="text-sm font-medium text-slate-600">Amount</label>
                                 <input
                                     name="amount"
                                     type="number"
                                     value={paymentform.amount}
                                     onChange={handleChange}
                                     placeholder="Enter Amount"
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all"
+                                    className="w-full px-4 py-3 rounded-xl bg-white outline-none border border-slate-200  text-slate-900 placeholder-slate-400"
                                 />
                             </div>
 
                             <button
                                 onClick={() => handlePayment()} disabled={paymentform.name.length < 4 || paymentform.message.length < 4 || paymentform.amount.length<1}
-                                className=" disabled:from-purple-950 to-blue-900 hover:from-purple-900 hover:to-blue-900 w-full cursor-pointer py-3 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 font-bold text-lg shadow-lg shadow-purple-900/20 transition-all active:scale-[0.98] mt-2"
+                                className=" disabled:from-slate-300 disabled:to-slate-400 disabled:cursor-not-allowed w-full cursor-pointer py-3 rounded-xl  font-bold text-lg bg-slate-700 hover:bg-slate-800 text-white mt-2"
                             >
                                 Pay
                             </button>
@@ -247,7 +246,7 @@ const PaymentPage = ({ username }) => {
 
                                         key={amt}
                                         onClick={() => handlePayment(amt)}
-                                        className="disabled:hidden flex-1 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 transition-colors font-medium text-slate-300 hover:text-white hover:border-slate-600"
+                                        className="disabled:hidden flex-1 py-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:bg-slate-100 transition-colors font-medium text-slate-600 hover:text-slate-900 hover:border-slate-300"
                                     >
                                         ₹{amt}
                                     </button>
@@ -262,4 +261,4 @@ const PaymentPage = ({ username }) => {
     );
 };
 
-export default PaymentPage;  
+export default PaymentPage;

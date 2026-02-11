@@ -23,11 +23,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className= "bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-white "
+        className= "bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] text-slate-900"
       >
         <SessionWrapper>
           <Navbar />
-          <div className="min-h-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] text-white">
+          <div className="min-h-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] text-slate-900">
             {children}
           </div>
           <Footer />
