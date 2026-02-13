@@ -5,7 +5,7 @@ A full-stack web platform where creators can receive financial support from thei
 
 # 📌 Features  
 
-🔐 Authentication
+# 🔐 Authentication
 
 Secure login using NextAuth
 
@@ -13,7 +13,7 @@ Session-based access control
 
 Protected dashboard routes
 
-💳 Payments (Test Mode)
+# 💳 Payments (Test Mode)
 
 Razorpay integration (Test Mode)
 
@@ -23,7 +23,7 @@ Secure server-side payment verification
 
 Supporters list updates after successful payment
 
-📊 Dashboard
+# 📊 Dashboard
 
 Dynamic user dashboard
 
@@ -41,7 +41,7 @@ Razorpay credentials
 
 Data persists after refresh
 
-👥 Supporters
+# 👥 Supporters
 
 Displays verified supporters only
 
@@ -49,7 +49,7 @@ Shows supporter name, message, and amount
 
 Total amount raised calculation
 
-🎨 UI / UX
+# 🎨 UI / UX
 
 Fully responsive design (mobile, tablet, desktop)
 
@@ -158,20 +158,22 @@ Responsive UI design
 
 # 📸 Screenshots
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a81d9f3f-a23b-4a01-9655-14f6bced7256" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dac2140d-dcc6-4859-bbda-6d2331f97b9a" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8d98c704-18d3-49e8-a91e-3f54bf335525" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8e7d1d6c-09d3-4fbe-a9ce-f978c60fa490" />
 
-<img width="960" height="540" alt="Screenshot 2026-02-09 164021" src="https://github.com/user-attachments/assets/22ad79ed-5cc0-4bc1-bfab-1be090add4df" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3ad34120-4823-44b2-a139-d08d05588beb" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3068eee2-b478-4729-9bdd-e46ea6946676" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7b978dd5-a943-4ec6-ba0e-f75e3b52f940" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6f92ffc5-c260-40b8-9692-6fcbfff2b95b" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/aee9f485-b5f4-4943-abe7-111a24ed8d70" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/85b72f90-fe94-4529-b9b3-e1f211086174" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2ed17042-0ea8-448f-9785-88eceb24534f" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/482f1e60-3d71-408c-95b0-2463c6f4125d" />
 
 
-📄 License
+# 📄 License
 
 This project is for educational and portfolio purposes.
 
