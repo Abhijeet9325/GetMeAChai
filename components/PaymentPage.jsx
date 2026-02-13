@@ -91,7 +91,6 @@ const PaymentPage = ({ username }) => {
         }
 
 
-
         const options = {
             key: currentUser.razorpayid,
             currency: "INR",
@@ -151,9 +150,9 @@ const PaymentPage = ({ username }) => {
 
             {/* COVER */}
             <div className="cover w-full relative">
-                <img className="w-full object-cover h-48 md:h-[350px]" src={currentUser?.profilepic} alt="" />
+                <img className="w-full object-cover h-48 md:h-[350px]" src={currentUser?.coverpic} alt="" />
                 <div className="absolute -bottom-16 md:-bottom-20 left-1/2 -translate-x-1/2 border-4 border-white rounded-lg shadow-lg">
-                    <img className="rounded-lg w-32 h-32 md:w-[150px] md:h-[150px] object-cover bg-white" src={currentUser?.coverpic} alt="" />
+                    <img className="rounded-lg w-32 h-32 md:w-[150px] md:h-[150px] object-cover bg-white" src={currentUser?.profilepic} alt="" />
                 </div>
             </div>
 

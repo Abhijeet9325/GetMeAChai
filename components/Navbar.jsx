@@ -78,7 +78,7 @@ const Navbar = () => {
 
         {!session &&
           <Link href={"/login"}>
-            <button type="button" className="text-white cursor-pointer text-white bg-gray-800 border-slate-300 shadow-lg shadow-gray-500/20 font-medium rounded-full text-sm px-6 py-2.5 text-center ">Login</button>
+            <button type="button" className="text-white cursor-pointer text-white bg-gray-800 border-slate-300  font-medium rounded-full text-sm px-6 py-2.5 text-center ">Login</button>
           </Link>
         }
       </div>

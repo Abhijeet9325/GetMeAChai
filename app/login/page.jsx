@@ -28,12 +28,12 @@ const Login = () => {
       <div className="w-full max-w-md bg-white backdrop-blur-md border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 p-8 relative overflow-hidden group hover:border-slate-300 transition-all duration-300">
 
         {/* Background Gradients */}
-        <div className="absolute -top-24 -left-24 w-48 h-48 bg-purple-400/10 rounded-full blur-[60px] group-hover:bg-purple-400/20 transition-all duration-500"></div>
-        <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-blue-400/10 rounded-full blur-[60px] group-hover:bg-blue-400/20 transition-all duration-500"></div>
+        <div className="absolute -top-24 -left-24 w-48 h-48 bg-purple-400/10 rounded-full blur-[60px] "></div>
+        <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-blue-400/10 rounded-full blur-[60px]"></div>
 
         <div className="relative z-10 flex flex-col items-center gap-6">
           <div className="text-center space-y-2">
-            <h1 className='text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'>
+            <h1 className='text-3xl font-extrabold text-blue-600'>
               Welcome Back!
             </h1>
             <p className="text-slate-600 text-sm">
